@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Алексей Прохоров — Директор по развитию технологий ИИ</title>
+  <!-- Google Fonts: Inter для чёткого современного текста -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== Глобальные переменные ===== */
+    :root {
+      --bg: #ffffff;
+      --surface: #f8fafc;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --accent: #2563eb;
+      --accent-light: #dbeafe;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+      --radius: 16px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --max-width: 1200px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ===== Утилиты ===== */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section {
+      padding: 6rem 0;
+      position: relative;
+      width: 100%;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+      color: var(--text-primary);
+    }
+
+    .section-subtitle {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      margin-bottom: 3rem;
+      max-width: 600px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 100px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    /* ===== Анимации появления ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== Шапка и навигация ===== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      transition: var(--transition);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color var(--transition);
+      position: relative;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    /* ===== Hero с канвасом нейросети ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+    }
+
+    #neuralCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.25;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 800px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.35rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-badge .dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      max-width: 550px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.875rem 2rem;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all var(--transition);
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1.5px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-light);
+    }
+
+    /* ===== Обо мне ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .skill-chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      transition: var(--transition);
+    }
+
+    .skill-chip:hover {
+      border-color: var(--accent);
+      background: var(--accent-light);
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .stat-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    /* ===== Опыт (Timeline) ===== */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      padding-left: 2rem;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -0.5rem;
+      top: 0.5rem;
+      width: 1rem;
+      height: 1rem;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 0 3px var(--accent-light);
+    }
+
+    .timeline-date {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-role {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-company {
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+    }
+
+    .timeline-desc {
+      color: var(--text-secondary);
+      list-style: none;
+      padding: 0;
+    }
+
+    .timeline-desc li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .timeline-desc li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* ===== Проекты ===== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: all var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-6px);
+      border-color: var(--accent-light);
+    }
+
+    .project-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--accent-light);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+      color: var(--accent);
+    }
+
+    .project-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-card p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .tech-tag {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .project-link {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: gap var(--transition);
+    }
+
+    .project-link:hover {
+      gap: 0.75rem;
+    }
+
+    /* ===== Контакты ===== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .contact-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .contact-links a:hover {
+      background: var(--accent-light);
+      border-color: var(--accent);
+    }
+
+    .contact-form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: var(--transition);
+      background: white;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-light);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* ===== Футер ===== */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* ===== Адаптивность (минимальная) ===== */
+    @media (max-width: 900px) {
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Фиксированная навигация -->
+  <header class="header">
+    <nav class="nav">
+      <a href="#" class="nav-logo">Алексей Прохоров</a>
+      <ul class="nav-links">
+        <li><a href="#about">Обо мне</a></li>
+        <li><a href="#experience">Опыт</a></li>
+        <li><a href="#projects">Проекты</a></li>
+        <li><a href="#contact">Контакты</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero с анимированным графом нейросети -->
+  <section class="hero" id="hero">
+    <canvas id="neuralCanvas"></canvas>
+    <div class="container hero-content">
+      <div class="hero-badge reveal">
+        <span class="dot"></span> Открыт к стратегическим проектам
+      </div>
+      <h1 class="reveal">Алексей <span>Прохоров</span></h1>
+      <p class="reveal">
+        <!-- EDIT: должность и ключевой посыл -->
+        Директор по развитию технологий искусственного интеллекта.<br>
+        Создаю AI-стратегии, которые превращают данные в конкурентное преимущество.
+      </p>
+      <div class="hero-buttons reveal">
+        <a href="#contact" class="btn btn-primary">Связаться</a>
+        <a href="#experience" class="btn btn-outline">Посмотреть опыт</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Обо мне -->
+  <section class="section" id="about">
+    <div class="container">
+      <h2 class="section-title reveal">Обо мне</h2>
+      <p class="section-subtitle reveal">Экспертиза на стыке науки, инженерии и бизнеса</p>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <!-- EDIT: тексты о себе -->
+          <p>Более 12 лет работаю на передовой технологий: от компьютерного зрения до больших языковых моделей. Как директор по развитию ИИ, я отвечаю за полный цикл — исследование, прототипирование, внедрение и масштабирование интеллектуальных систем в промышленной эксплуатации.</p>
+          <p>Моя миссия — делать искусственный интеллект практичным инструментом роста, а не хайповой абстракцией. Руковожу распределёнными R&D-командами, выстраиваю MLOps-процессы и формирую дорожные карты, которые синхронизируют технологические возможности с бизнес-целями.</p>
+          <div class="skill-chips">
+            <span class="skill-chip">AI-стратегия</span>
+            <span class="skill-chip">NLP & LLM</span>
+            <span class="skill-chip">Computer Vision</span>
+            <span class="skill-chip">MLOps</span>
+            <span class="skill-chip">AutoML</span>
+            <span class="skill-chip">Управление R&D</span>
+          </div>
+        </div>
+        <div class="about-stats reveal">
+          <div class="stat-card">
+            <div class="stat-number">12+</div>
+            <div class="stat-label">лет в IT и AI</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">25+</div>
+            <div class="stat-label">успешных проектов</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">4</div>
+            <div class="stat-label">патента и публикации</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">3</div>
+            <div class="stat-label">продукта выведено на рынок</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Опыт работы -->
+  <section class="section" id="experience" style="background: var(--surface);">
+    <div class="container">
+      <h2 class="section-title reveal">Опыт работы</h2>
+      <p class="section-subtitle reveal">Карьера в управлении разработкой AI-решений</p>
+      <div class="timeline reveal">
+        <!-- EDIT: каждая карточка опыта -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2022 — настоящее время</div>
+          <div class="timeline-role">Директор по развитию технологий ИИ</div>
+          <div class="timeline-company">Группа компаний «Технологии будущего»</div>
+          <ul class="timeline-desc">
+            <li>Разработал и внедрил AI-стратегию, увеличившую эффективность ключевых бизнес-процессов на 35%.</li>
+            <li>Построил отдел NLP из 18 человек, запустил 2 внутренних продукта (чат-бот, система аналитики обращений).</li>
+            <li>Внедрил MLOps-платформу, сократив время вывода моделей в продуктив с 3 месяцев до 2 недель.</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2018 — 2022</div>
+          <div class="timeline-role">Руководитель направления Computer Vision</div>
+          <div class="timeline-company">DataLab AI</div>
+          <ul class="timeline-desc">
+            <li>Управлял командой из 12 инженеров, реализовал проекты для ритейла и промышленности.</li>
+            <li>Разработал систему видеоаналитики, внедрённую на 200+ объектах.</li>
+            <li>Достиг точности распознавания 98,5% на потоковых данных, сэкономив клиенту $2M в год.</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2015 — 2018</div>
+          <div class="timeline-role">Старший Data Scientist</div>
+          <div class="timeline-company">FinTech Solutions</div>
+          <ul class="timeline-desc">
+            <li>Построил предиктивные модели кредитного скоринга (Gini > 0.75).</li>
+            <li>Автоматизировал процесс принятия решений, снизив операционные расходы на 20%.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Проекты -->
+  <section class="section" id="projects">
+    <div class="container">
+      <h2 class="section-title reveal">Избранные проекты</h2>
+      <p class="section-subtitle reveal">Реальные кейсы внедрения искусственного интеллекта</p>
+      <div class="projects-grid">
+        <!-- EDIT: проекты -->
+        <div class="project-card reveal">
+          <div class="project-icon">🧠</div>
+          <h3>AI-ассистент для техподдержки</h3>
+          <p>Корпоративный чат-бот на базе LLM с RAG-архитектурой, обрабатывающий 80% типовых обращений без участия оператора.</p>
+          <div class="project-tech">
+            <span class="tech-tag">GPT-4</span>
+            <span class="tech-tag">LangChain</span>
+            <span class="tech-tag">Pinecone</span>
+            <span class="tech-tag">FastAPI</span>
+          </div>
+          <a href="#" class="project-link">Подробнее →</a>
+        </div>
+        <div class="project-card reveal">
+          <div class="project-icon">👁️</div>
+          <h3>Система контроля качества на производстве</h3>
+          <p>Компьютерное зрение для дефектоскопии поверхностей в реальном времени: точность 99,2%, скорость 30 кадров/с.</p>
+          <div class="project-tech">
+            <span class="tech-tag">PyTorch</span>
+            <span class="tech-tag">ONNX Runtime</span>
+            <span class="tech-tag">Kubernetes</span>
+          </div>
+          <a href="#" class="project-link">Подробнее →</a>
+        </div>
+        <div class="project-card reveal">
+          <div class="project-icon">📊</div>
+          <h3>Предиктивная аналитика оттока клиентов</h3>
+          <p>Модель градиентного бустинга, предсказывающая отток за 14 дней с точностью 92%, интегрирована в CRM.</p>
+          <div class="project-tech">
+            <span class="tech-tag">CatBoost</span>
+            <span class="tech-tag">MLflow</span>
+            <span class="tech-tag">Airflow</span>
+            <span class="tech-tag">PostgreSQL</span>
+          </div>
+          <a href="#" class="project-link">Подробнее →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Контакты -->
+  <section class="section" id="contact" style="background: var(--surface);">
+    <div class="container">
+      <h2 class="section-title reveal">Контакты</h2>
+      <p class="section-subtitle reveal">Обсудим ваш проект или стратегическое партнёрство</p>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <h3>Свяжитесь удобным способом</h3>
+          <p>Отвечаю лично в течение 24 часов. Предпочитаю email или Telegram для оперативной коммуникации.</p>
+          <ul class="contact-links">
+            <!-- EDIT: ваши реальные ссылки -->
+            <li><a href="mailto:alexey.prokhorov@example.com">✉️ Email</a></li>
+            <li><a href="https://t.me/alexeyprokhorov" target="_blank">💬 Telegram</a></li>
+            <li><a href="https://linkedin.com/in/alexeyprokhorov" target="_blank">🔗 LinkedIn</a></li>
+          </ul>
+        </div>
+        <div class="contact-form reveal">
+          <form action="#" method="POST">
+            <div class="form-group">
+              <label for="name">Имя</label>
+              <input type="text" id="name" name="name" placeholder="Иван Иванов" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="ivan@company.com" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Сообщение</label>
+              <textarea id="message" name="message" placeholder="Расскажите о вашей задаче..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%">Отправить</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Футер -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Алексей Прохоров. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <!-- Скрипты: анимация нейросети и появление блоков -->
+  <script>
+    (function() {
+      // ===== Анимация нейронной сети на Canvas =====
+      const canvas = document.getElementById('neuralCanvas');
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      let particles = [];
+      const PARTICLE_COUNT = 80;
+      const CONNECTION_DIST = 100;
+      const PARTICLE_COLOR = '37, 99, 235'; // акцентный синий в RGB
+
+      function resize() {
+        width = canvas.width = canvas.offsetWidth;
+        height = canvas.height = canvas.offsetHeight;
+      }
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.vx = (Math.random() - 0.5) * 0.8;
+          this.vy = (Math.random() - 0.5) * 0.8;
+          this.radius = Math.random() * 2 + 1;
+        }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          if (this.x < 0 || this.x > width) this.vx *= -1;
+          if (this.y < 0 || this.y > height) this.vy *= -1;
+        }
+        draw(ctx) {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${PARTICLE_COLOR}, 0.7)`;
+          ctx.fill();
+        }
+      }
+
+      function initParticles() {
+        particles = [];
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+          particles.push(new Particle());
+        }
+      }
+
+      function connectParticles() {
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < CONNECTION_DIST) {
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = `rgba(${PARTICLE_COLOR}, ${0.15 * (1 - dist / CONNECTION_DIST)})`;
+              ctx.lineWidth = 0.6;
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      function animateNeural() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+          p.update();
+          p.draw(ctx);
+        });
+        connectParticles();
+        requestAnimationFrame(animateNeural);
+      }
+
+      window.addEventListener('resize', () => {
+        resize();
+        initParticles();
+      });
+
+      resize();
+      initParticles();
+      animateNeural();
+
+      // ===== Плавное появление блоков при скролле =====
+      const revealElements = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+      revealElements.forEach(el => observer.observe(el));
+
+      // ===== Активный пункт меню при скролле =====
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-links a');
+      window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 100;
+          if (window.scrollY >= sectionTop) {
+            current = section.getAttribute('id');
+          }
+        });
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
