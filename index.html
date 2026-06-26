@@ -66,6 +66,13 @@
       height: 80px; max-width: var(--max-width); margin: 0 auto; padding: 0 2rem;
     }
 
+    /* Бренд: логотип + подстрочник */
+    .nav-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
     /* Логотип AI.ПРОХОРОВ */
     .nav-logo {
       text-decoration: none; display: flex; align-items: baseline; gap: 0.25rem;
@@ -90,7 +97,7 @@
     }
     .nav-logo-sub {
       display: block; font-weight: 400; font-size: 0.75rem; color: var(--text-muted);
-      letter-spacing: 0.02em; margin-top: 2px; margin-left: 0.25rem;
+      letter-spacing: 0.02em; margin-top: 2px;
     }
 
     .nav-links { display: flex; gap: 2rem; list-style: none; }
@@ -374,11 +381,11 @@
 <body>
   <header class="header">
     <nav class="nav">
-      <a href="#" class="nav-logo" id="mainLogo">
-        <span class="logo-ai">AI.</span>
-        <span class="logo-prokhorov">ПРОХОРОВ</span>
-      </a>
-      <div style="display: flex; flex-direction: column;">
+      <div class="nav-brand">
+        <a href="#" class="nav-logo" id="mainLogo">
+          <span class="logo-ai">AI.</span>
+          <span class="logo-prokhorov">ПРОХОРОВ</span>
+        </a>
         <span class="nav-logo-sub">директор по развитию технологий искусственного интеллекта</span>
       </div>
       <ul class="nav-links">
@@ -397,8 +404,8 @@
     <canvas id="neuralCanvas"></canvas>
     <div class="container hero-content">
       <div class="hero-photo reveal" id="heroPhoto">
-    <img src="aipro.jpg" alt="Алексей Прохоров">
-</div>
+        <img src="aipro.jpg" alt="Алексей Прохоров">
+      </div>
       <div class="hero-text">
         <div class="hero-badge reveal">
           <span class="dot"></span> Открыт к стратегическим проектам
@@ -461,7 +468,7 @@
           <div class="timeline-dot"></div>
           <div class="timeline-date">2025 — настоящее время</div>
           <div class="timeline-role">Директор по развитию технологий ИИ</div>
-            <ul class="timeline-desc">
+          <ul class="timeline-desc">
             <li>Разработал и внедрил AI-стратегию, увеличившую эффективность ключевых бизнес-процессов на 70%</li>
             <li>Построил отдел NLP из 25 человек, запустил 2 внутренних продукта (чат-бот, ИИ-экосистему)</li>
             <li>Внедрил MLOps-платформу, сократив время вывода моделей в продуктив с 3 месяцев до 2 недель</li>
@@ -471,7 +478,7 @@
           <div class="timeline-dot"></div>
           <div class="timeline-date">2024 — 2025</div>
           <div class="timeline-role">Руководитель направления "Цифровое строительство"</div>
-                    <ul class="timeline-desc">
+          <ul class="timeline-desc">
             <li>Управлял командой из 25 специалистов, реализовал проекты в контрольной (надзорной) деятельности</li>
             <li>Разработал систему видеоаналитики, внедрённую на 200+ объектах</li>
             <li>Достиг точности распознавания 98,5% на потоковых данных, сэкономив клиенту 500 млн руб. в год</li>
@@ -481,7 +488,7 @@
           <div class="timeline-dot"></div>
           <div class="timeline-date">2020 — 2024</div>
           <div class="timeline-role">Старший аналитик</div>
-                    <ul class="timeline-desc">
+          <ul class="timeline-desc">
             <li>Построил предиктивные модели (Gini > 0.75)</li>
             <li>Автоматизировал процесс принятия решений, снизив операционные расходы на 20%</li>
           </ul>
@@ -541,8 +548,8 @@
       <p class="section-subtitle reveal">Авторские издания и публикации</p>
       <div class="book-card reveal">
         <div class="book-cover">
-    <img src="books.png" alt="Записки директора по искусственному интеллекту" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
-</div>
+          <img src="books.png" alt="Записки директора по искусственному интеллекту" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+        </div>
         <div class="book-info">
           <h3>Записки директора по искусственному интеллекту</h3>
           <div class="book-author">Прохоров, Алексей Павлович</div>
