@@ -55,7 +55,7 @@
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ===== ШАПКА ===== */
+    /* Шапка */
     .header {
       position: fixed; top: 0; left: 0; width: 100%;
       background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);
@@ -106,7 +106,7 @@
     }
     .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
-    /* ===== HERO ===== */
+    /* Hero */
     .hero {
       min-height: 100vh; display: flex; align-items: center;
       position: relative; overflow: hidden;
@@ -128,12 +128,10 @@
       box-shadow: 0 0 0 4px var(--accent-light), var(--shadow-lg);
       display: flex; align-items: center; justify-content: center;
       overflow: hidden;
-      /* Placeholder иконка */
       background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2394a3b8"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v1.2c0 .66.54 1.2 1.2 1.2h16.8c.66 0 1.2-.54 1.2-1.2v-1.2c0-3.2-6.4-4.8-9.6-4.8z"/></svg>');
       background-size: 60px; background-repeat: no-repeat; background-position: center;
       background-color: #e2e8f0;
     }
-    /* Если фото задано, оно будет показано */
     .hero-photo img {
       width: 100%; height: 100%; object-fit: cover;
     }
@@ -188,7 +186,7 @@
       background: var(--accent-light);
     }
 
-    /* ===== ОБО МНЕ ===== */
+    /* Обо мне */
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
     .about-text p { color: var(--text-secondary); margin-bottom: 1.5rem; }
     .skill-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
@@ -208,7 +206,7 @@
     .stat-number { font-size: 2.5rem; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 0.5rem; }
     .stat-label { color: var(--text-secondary); font-size: 0.95rem; }
 
-    /* ===== ОПЫТ ===== */
+    /* Опыт */
     .timeline { position: relative; padding-left: 2rem; }
     .timeline::before {
       content: ''; position: absolute; left: 0; top: 0; bottom: 0;
@@ -231,7 +229,7 @@
       content: '▹'; position: absolute; left: 0; color: var(--accent); font-weight: 700;
     }
 
-    /* ===== ПРОЕКТЫ ===== */
+    /* Проекты */
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem; }
     .project-card {
       background: var(--surface); border: 1px solid var(--border);
@@ -259,7 +257,7 @@
     }
     .project-link:hover { gap: 0.75rem; }
 
-    /* ===== КНИГИ ===== */
+    /* Книги */
     .book-card {
       display: grid; grid-template-columns: 240px 1fr; gap: 2.5rem;
       background: var(--surface); border: 1px solid var(--border);
@@ -279,14 +277,55 @@
     .book-author { font-weight: 500; color: var(--text-secondary); margin-bottom: 1rem; }
     .book-description { color: var(--text-secondary); line-height: 1.7; white-space: pre-line; }
 
-    /* ===== СТАТЬИ ===== */
+    /* Статьи */
     .articles-empty {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 3rem 2rem; text-align: center;
       color: var(--text-muted); font-size: 1.1rem;
     }
 
-    /* ===== КОНТАКТЫ ===== */
+    /* Подкасты */
+    .podcast-list {
+      display: flex; flex-direction: column; gap: 0;
+      border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; background: var(--surface);
+    }
+    .podcast-item {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding: 1.25rem 1.5rem; gap: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+    .podcast-item:last-child { border-bottom: none; }
+    .podcast-item:hover { background: rgba(37, 99, 235, 0.03); }
+
+    .podcast-number {
+      font-weight: 700; color: var(--accent); min-width: 1.8rem;
+      font-size: 1rem; line-height: 1.5;
+    }
+    .podcast-title {
+      flex: 1; font-weight: 500; color: var(--text-primary);
+      line-height: 1.5;
+    }
+    .podcast-links {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+      align-items: center; justify-content: flex-end;
+      min-width: 280px;
+    }
+    .platform-link {
+      font-size: 0.7rem; padding: 0.25rem 0.6rem;
+      background: white; border: 1px solid var(--border);
+      border-radius: 100px; text-decoration: none;
+      color: var(--text-secondary); font-weight: 500;
+      transition: var(--transition); white-space: nowrap;
+      display: inline-flex; align-items: center; gap: 0.2rem;
+    }
+    .platform-link:hover {
+      background: var(--accent-light); border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Контакты */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
     .contact-info h3 { font-size: 1.5rem; margin-bottom: 1rem; }
     .contact-info p { color: var(--text-secondary); margin-bottom: 1.5rem; }
@@ -327,6 +366,8 @@
       .nav-links { display: none; }
       .book-card { grid-template-columns: 1fr; }
       .book-cover { max-width: 200px; }
+      .podcast-item { flex-wrap: wrap; }
+      .podcast-links { min-width: auto; justify-content: flex-start; }
     }
   </style>
 </head>
@@ -346,6 +387,7 @@
         <li><a href="#projects">Проекты</a></li>
         <li><a href="#books">Книги</a></li>
         <li><a href="#articles">Статьи</a></li>
+        <li><a href="#podcasts">Подкасты</a></li>
         <li><a href="#contact">Контакты</a></li>
       </ul>
     </nav>
@@ -526,8 +568,256 @@
     </div>
   </section>
 
+  <!-- ПОДКАСТЫ -->
+  <section class="section" id="podcasts" style="background: var(--surface);">
+    <div class="container">
+      <h2 class="section-title reveal">Подкасты</h2>
+      <p class="section-subtitle reveal">Выпуски авторского подкаста об искусственном интеллекте, управлении и технологиях</p>
+      <div class="podcast-list reveal">
+        <!-- Выпуск 1 -->
+        <div class="podcast-item">
+          <div class="podcast-number">1.</div>
+          <div class="podcast-title">Как разговаривать с машиной, чтобы получить шедевр (не просто текст)?</div>
+          <div class="podcast-links">
+            <a href="https://alproailife.mave.digital/" target="_blank" rel="noopener" class="platform-link">🎙 MAVE</a>
+            <a href="https://zvuk.com/podcast/49395272" target="_blank" rel="noopener" class="platform-link">🔊 ЗВУК</a>
+            <a href="https://vk.ru/podcasts-236572303" target="_blank" rel="noopener" class="platform-link">📱 VK</a>
+            <a href="https://music.yandex.ru/album/40923662?ref_id=4987D2EB-E3ED-444E-9CB3-C8E044407EF1&utm_medium=copy_link" target="_blank" rel="noopener" class="platform-link">🎵 Яндекс</a>
+            <a href="https://podcasts.apple.com/us/podcast/%D0%B8%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%B8%D0%BD%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D0%BA%D1%82-%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B8-%D1%82%D1%80%D0%B5%D0%BD%D0%B4%D1%8B-%D0%BC%D0%B0%D1%85-alproailife/id1883681838" target="_blank" rel="noopener" class="platform-link">🍎 Apple</a>
+            <a href="https://mts-music-spo.onelink.me/sKFX/7wmn7bcg" target="_blank" rel="noopener" class="platform-link">🎶 MTS</a>
+            <a href="https://www.litres.ru/podcast/aleksey-prohorov-339/iskusstvennyy-intellekt-tehnologii-trendy-mah-alproai-73966002/" target="_blank" rel="noopener" class="platform-link">📚 Литрес</a>
+          </div>
+        </div>
+        <!-- Выпуск 2 -->
+        <div class="podcast-item">
+          <div class="podcast-number">2.</div>
+          <div class="podcast-title">Почему гибридный формат — это навсегда и как им управлять?</div>
+          <div class="podcast-links">
+            <a href="https://alproailife.mave.digital/" target="_blank" rel="noopener" class="platform-link">🎙 MAVE</a>
+            <a href="https://zvuk.com/podcast/49395272" target="_blank" rel="noopener" class="platform-link">🔊 ЗВУК</a>
+            <a href="https://vk.ru/podcasts-236572303" target="_blank" rel="noopener" class="platform-link">📱 VK</a>
+            <a href="https://music.yandex.ru/album/40923662?ref_id=4987D2EB-E3ED-444E-9CB3-C8E044407EF1&utm_medium=copy_link" target="_blank" rel="noopener" class="platform-link">🎵 Яндекс</a>
+            <a href="https://podcasts.apple.com/us/podcast/%D0%B8%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%B8%D0%BD%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D0%BA%D1%82-%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B8-%D1%82%D1%80%D0%B5%D0%BD%D0%B4%D1%8B-%D0%BC%D0%B0%D1%85-alproailife/id1883681838" target="_blank" rel="noopener" class="platform-link">🍎 Apple</a>
+            <a href="https://mts-music-spo.onelink.me/sKFX/7wmn7bcg" target="_blank" rel="noopener" class="platform-link">🎶 MTS</a>
+            <a href="https://www.litres.ru/podcast/aleksey-prohorov-339/iskusstvennyy-intellekt-tehnologii-trendy-mah-alproai-73966002/" target="_blank" rel="noopener" class="platform-link">📚 Литрес</a>
+          </div>
+        </div>
+        <!-- Выпуск 3 -->
+        <div class="podcast-item">
+          <div class="podcast-number">3.</div>
+          <div class="podcast-title">Agile — это не «быстро»: заблуждения заказчиков о гибких методологиях</div>
+          <div class="podcast-links">
+            <a href="https://alproailife.mave.digital/" target="_blank" rel="noopener" class="platform-link">🎙 MAVE</a>
+            <a href="https://zvuk.com/podcast/49395272" target="_blank" rel="noopener" class="platform-link">🔊 ЗВУК</a>
+            <a href="https://vk.ru/podcasts-236572303" target="_blank" rel="noopener" class="platform-link">📱 VK</a>
+            <a href="https://music.yandex.ru/album/40923662?ref_id=4987D2EB-E3ED-444E-9CB3-C8E044407EF1&utm_medium=copy_link" target="_blank" rel="noopener" class="platform-link">🎵 Яндекс</a>
+            <a href="https://podcasts.apple.com/us/podcast/%D0%B8%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%B8%D0%BD%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D0%BA%D1%82-%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B8-%D1%82%D1%80%D0%B5%D0%BD%D0%B4%D1%8B-%D0%BC%D0%B0%D1%85-alproailife/id1883681838" target="_blank" rel="noopener" class="platform-link">🍎 Apple</a>
+            <a href="https://mts-music-spo.onelink.me/sKFX/7wmn7bcg" target="_blank" rel="noopener" class="platform-link">🎶 MTS</a>
+            <a href="https://www.litres.ru/podcast/aleksey-prohorov-339/iskusstvennyy-intellekt-tehnologii-trendy-mah-alproai-73966002/" target="_blank" rel="noopener" class="platform-link">📚 Литрес</a>
+          </div>
+        </div>
+        <!-- Выпуск 4 -->
+        <div class="podcast-item">
+          <div class="podcast-number">4.</div>
+          <div class="podcast-title">Лидер в эпоху неопределенности: где брать опору, когда рушатся все прогнозы?</div>
+          <div class="podcast-links">
+            <a href="https://alproailife.mave.digital/" target="_blank" rel="noopener" class="platform-link">🎙 MAVE</a>
+            <a href="https://zvuk.com/podcast/49395272" target="_blank" rel="noopener" class="platform-link">🔊 ЗВУК</a>
+            <a href="https://vk.ru/podcasts-236572303" target="_blank" rel="noopener" class="platform-link">📱 VK</a>
+            <a href="https://music.yandex.ru/album/40923662?ref_id=4987D2EB-E3ED-444E-9CB3-C8E044407EF1&utm_medium=copy_link" target="_blank" rel="noopener" class="platform-link">🎵 Яндекс</a>
+            <a href="https://podcasts.apple.com/us/podcast/%D0%B8%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%B8%D0%BD%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D0%BA%D1%82-%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B8-%D1%82%D1%80%D0%B5%D0%BD%D0%B4%D1%8B-%D0%BC%D0%B0%D1%85-alproailife/id1883681838" target="_blank" rel="noopener" class="platform-link">🍎 Apple</a>
+            <a href="https://mts-music-spo.onelink.me/sKFX/7wmn7bcg" target="_blank" rel="noopener" class="platform-link">🎶 MTS</a>
+            <a href="https://www.litres.ru/podcast/aleksey-prohorov-339/iskusstvennyy-intellekt-tehnologii-trendy-mah-alproai-73966002/" target="_blank" rel="noopener" class="platform-link">📚 Литрес</a>
+          </div>
+        </div>
+        <!-- Выпуск 5 -->
+        <div class="podcast-item">
+          <div class="podcast-number">5.</div>
+          <div class="podcast-title">Эффект Теслы: как продавать идеи, которые рынок пока не готов принять?</div>
+          <div class="podcast-links">
+            <a href="https://alproailife.mave.digital/" target="_blank" rel="noopener" class="platform-link">🎙 MAVE</a>
+            <a href="https://zvuk.com/podcast/49395272" target="_blank" rel="noopener" class="platform-link">🔊 ЗВУК</a>
+            <a href="https://vk.ru/podcasts-236572303" target="_blank" rel="noopener" class="platform-link">📱 VK</a>
+            <a href="https://music.yandex.ru/album/40923662?ref_id=4987D2EB-E3ED-444E-9CB3-C8E044407EF1&utm_medium=copy_link" target="_blank" rel="noopener" class="platform-link">🎵 Яндекс</a>
+            <a href="https://podcasts.apple.com/us/podcast/%D0%B8%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%B8%D0%BD%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D0%BA%D1%82-%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B8-%D1%82%D1%80%D0%B5%D0%BD%D0%B4%D1%8B-%D0%BC%D0%B0%D1%85-alproailife/id1883681838" target="_blank" rel="noopener" class="platform-link">🍎 Apple</a>
+            <a href="https://mts-music-spo.onelink.me/sKFX/7wmn7bcg" target="_blank" rel="noopener" class="platform-link">🎶 MTS</a>
+            <a href="https://www.litres.ru/podcast/aleksey-prohorov-339/iskusstvennyy-intellekt-tehnologii-trendy-mah-alproai-73966002/" target="_blank" rel="noopener" class="platform-link">📚 Литрес</a>
+          </div>
+        </div>
+        <!-- Выпуск 6 -->
+        <div class="podcast-item">
+          <div class="podcast-number">6.</div>
+          <div class="podcast-title">Токсичный код и токсичные люди: как чистить команду от «звезд», которые валят проект</div>
+          <div class="podcast-links">
+            <a href="https://alproailife.mave.digital/" target="_blank" rel="noopener" class="platform-link">🎙 MAVE</a>
+            <a href="https://zvuk.com/podcast/49395272" target="_blank" rel="noopener" class="platform-link">🔊 ЗВУК</a>
+            <a href="https://vk.ru/podcasts-236572303" target="_blank" rel="noopener" class="platform-link">📱 VK</a>
+            <a href="https://music.yandex.ru/album/40923662?ref_id=4987D2EB-E3ED-444E-9CB3-C8E044407EF1&utm_medium=copy_link" target="_blank" rel="noopener" class="platform-link">🎵 Яндекс</a>
+            <a href="https://podcasts.apple.com/us/podcast/%D0%B8%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%B8%D0%BD%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D0%BA%D1%82-%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B8-%D1%82%D1%80%D0%B5%D0%BD%D0%B4%D1%8B-%D0%BC%D0%B0%D1%85-alproailife/id1883681838" target="_blank" rel="noopener" class="platform-link">🍎 Apple</a>
+            <a href="https://mts-music-spo.onelink.me/sKFX/7wmn7bcg" target="_blank" rel="noopener" class="platform-link">🎶 MTS</a>
+            <a href="https://www.litres.ru/podcast/aleksey-prohorov-339/iskusstvennyy-intellekt-tehnologii-trendy-mah-alproai-73966002/" target="_blank" rel="noopener" class="platform-link">📚 Литрес</a>
+          </div>
+        </div>
+        <!-- Выпуск 7 -->
+        <div class="podcast-item">
+          <div class="podcast-number">7.</div>
+          <div class="podcast-title">Теневое внедрение ИИ: сотрудники сами покупают ChatGPT — угроза или благо для компании</div>
+          <div class="podcast-links">
+            <a href="https://alproailife.mave.digital/" target="_blank" rel="noopener" class="platform-link">🎙 MAVE</a>
+            <a href="https://zvuk.com/podcast/49395272" target="_blank" rel="noopener" class="platform-link">🔊 ЗВУК</a>
+            <a href="https://vk.ru/podcasts-236572303" target="_blank" rel="noopener" class="platform-link">📱 VK</a>
+            <a href="https://music.yandex.ru/album/40923662?ref_id=4987D2EB-E3ED-444E-9CB3-C8E044407EF1&utm_medium=copy_link" target="_blank" rel="noopener" class="platform-link">🎵 Яндекс</a>
+            <a href="https://podcasts.apple.com/us/podcast/%D0%B8%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%B8%D0%BD%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D0%BA%D1%82-%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B8-%D1%82%D1%80%D0%B5%D0%BD%D0%B4%D1%8B-%D0%BC%D0%B0%D1%85-alproailife/id1883681838" target="_blank" rel="noopener" class="platform-link">🍎 Apple</a>
+            <a href="https://mts-music-spo.onelink.me/sKFX/7wmn7bcg" target="_blank" rel="noopener" class="platform-link">🎶 MTS</a>
+            <a href="https://www.litres.ru/podcast/aleksey-prohorov-339/iskusstvennyy-intellekt-tehnologii-trendy-mah-alproai-73966002/" target="_blank" rel="noopener" class="platform-link">📚 Литрес</a>
+          </div>
+        </div>
+        <!-- Выпуск 8 -->
+        <div class="podcast-item">
+          <div class="podcast-number">8.</div>
+          <div class="podcast-title">Поколение Z в IT: мифы о ленивых зумерах и реальные мотиваторы</div>
+          <div class="podcast-links">
+            <a href="https://alproailife.mave.digital/" target="_blank" rel="noopener" class="platform-link">🎙 MAVE</a>
+            <a href="https://zvuk.com/podcast/49395272" target="_blank" rel="noopener" class="platform-link">🔊 ЗВУК</a>
+            <a href="https://vk.ru/podcasts-236572303" target="_blank" rel="noopener" class="platform-link">📱 VK</a>
+            <a href="https://music.yandex.ru/album/40923662?ref_id=4987D2EB-E3ED-444E-9CB3-C8E044407EF1&utm_medium=copy_link" target="_blank" rel="noopener" class="platform-link">🎵 Яндекс</a>
+            <a href="https://podcasts.apple.com/us/podcast/%D0%B8%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%B8%D0%BD%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D0%BA%D1%82-%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B8-%D1%82%D1%80%D0%B5%D0%BD%D0%B4%D1%8B-%D0%BC%D0%B0%D1%85-alproailife/id1883681838" target="_blank" rel="noopener" class="platform-link">🍎 Apple</a>
+            <a href="https://mts-music-spo.onelink.me/sKFX/7wmn7bcg" target="_blank" rel="noopener" class="platform-link">🎶 MTS</a>
+            <a href="https://www.litres.ru/podcast/aleksey-prohorov-339/iskusstvennyy-intellekt-tehnologii-trendy-mah-alproai-73966002/" target="_blank" rel="noopener" class="platform-link">📚 Литрес</a>
+          </div>
+        </div>
+        <!-- Выпуск 9 -->
+        <div class="podcast-item">
+          <div class="podcast-number">9.</div>
+          <div class="podcast-title">Инновации снизу: как услышать идеи рядовых сотрудников и не убить в них инициативу</div>
+          <div class="podcast-links">
+            <a href="https://alproailife.mave.digital/" target="_blank" rel="noopener" class="platform-link">🎙 MAVE</a>
+            <a href="https://zvuk.com/podcast/49395272" target="_blank" rel="noopener" class="platform-link">🔊 ЗВУК</a>
+            <a href="https://vk.ru/podcasts-236572303" target="_blank" rel="noopener" class="platform-link">📱 VK</a>
+            <a href="https://music.yandex.ru/album/40923662?ref_id=4987D2EB-E3ED-444E-9CB3-C8E044407EF1&utm_medium=copy_link" target="_blank" rel="noopener" class="platform-link">🎵 Яндекс</a>
+            <a href="https://podcasts.apple.com/us/podcast/%D0%B8%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%B8%D0%BD%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D0%BA%D1%82-%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B8-%D1%82%D1%80%D0%B5%D0%BD%D0%B4%D1%8B-%D0%BC%D0%B0%D1%85-alproailife/id1883681838" target="_blank" rel="noopener" class="platform-link">🍎 Apple</a>
+            <a href="https://mts-music-spo.onelink.me/sKFX/7wmn7bcg" target="_blank" rel="noopener" class="platform-link">🎶 MTS</a>
+            <a href="https://www.litres.ru/podcast/aleksey-prohorov-339/iskusstvennyy-intellekt-tehnologii-trendy-mah-alproai-73966002/" target="_blank" rel="noopener" class="platform-link">📚 Литрес</a>
+          </div>
+        </div>
+        <!-- Выпуск 10 -->
+        <div class="podcast-item">
+          <div class="podcast-number">10.</div>
+          <div class="podcast-title">Offboarding: как расставаться с сотрудниками, чтобы они становились адвокатами бренда</div>
+          <div class="podcast-links">
+            <a href="https://alproailife.mave.digital/" target="_blank" rel="noopener" class="platform-link">🎙 MAVE</a>
+            <a href="https://zvuk.com/podcast/49395272" target="_blank" rel="noopener" class="platform-link">🔊 ЗВУК</a>
+            <a href="https://vk.ru/podcasts-236572303" target="_blank" rel="noopener" class="platform-link">📱 VK</a>
+            <a href="https://music.yandex.ru/album/40923662?ref_id=4987D2EB-E3ED-444E-9CB3-C8E044407EF1&utm_medium=copy_link" target="_blank" rel="noopener" class="platform-link">🎵 Яндекс</a>
+            <a href="https://podcasts.apple.com/us/podcast/%D0%B8%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%B8%D0%BD%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D0%BA%D1%82-%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B8-%D1%82%D1%80%D0%B5%D0%BD%D0%B4%D1%8B-%D0%BC%D0%B0%D1%85-alproailife/id1883681838" target="_blank" rel="noopener" class="platform-link">🍎 Apple</a>
+            <a href="https://mts-music-spo.onelink.me/sKFX/7wmn7bcg" target="_blank" rel="noopener" class="platform-link">🎶 MTS</a>
+            <a href="https://www.litres.ru/podcast/aleksey-prohorov-339/iskusstvennyy-intellekt-tehnologii-trendy-mah-alproai-73966002/" target="_blank" rel="noopener" class="platform-link">📚 Литрес</a>
+          </div>
+        </div>
+        <!-- Выпуск 11 -->
+        <div class="podcast-item">
+          <div class="podcast-number">11.</div>
+          <div class="podcast-title">Упаковка опыта: как продать себя дороже на собеседовании в 2026 году</div>
+          <div class="podcast-links">
+            <a href="https://alproailife.mave.digital/" target="_blank" rel="noopener" class="platform-link">🎙 MAVE</a>
+            <a href="https://zvuk.com/podcast/49395272" target="_blank" rel="noopener" class="platform-link">🔊 ЗВУК</a>
+            <a href="https://vk.ru/podcasts-236572303" target="_blank" rel="noopener" class="platform-link">📱 VK</a>
+            <a href="https://music.yandex.ru/album/40923662?ref_id=4987D2EB-E3ED-444E-9CB3-C8E044407EF1&utm_medium=copy_link" target="_blank" rel="noopener" class="platform-link">🎵 Яндекс</a>
+            <a href="https://podcasts.apple.com/us/podcast/%D0%B8%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%B8%D0%BD%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D0%BA%D1%82-%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B8-%D1%82%D1%80%D0%B5%D0%BD%D0%B4%D1%8B-%D0%BC%D0%B0%D1%85-alproailife/id1883681838" target="_blank" rel="noopener" class="platform-link">🍎 Apple</a>
+            <a href="https://mts-music-spo.onelink.me/sKFX/7wmn7bcg" target="_blank" rel="noopener" class="platform-link">🎶 MTS</a>
+            <a href="https://www.litres.ru/podcast/aleksey-prohorov-339/iskusstvennyy-intellekt-tehnologii-trendy-mah-alproai-73966002/" target="_blank" rel="noopener" class="platform-link">📚 Литрес</a>
+          </div>
+        </div>
+        <!-- Выпуск 12 -->
+        <div class="podcast-item">
+          <div class="podcast-number">12.</div>
+          <div class="podcast-title">MVP или MMF: что показать клиенту в первую очередь?</div>
+          <div class="podcast-links">
+            <a href="https://alproailife.mave.digital/" target="_blank" rel="noopener" class="platform-link">🎙 MAVE</a>
+            <a href="https://zvuk.com/podcast/49395272" target="_blank" rel="noopener" class="platform-link">🔊 ЗВУК</a>
+            <a href="https://vk.ru/podcasts-236572303" target="_blank" rel="noopener" class="platform-link">📱 VK</a>
+            <a href="https://music.yandex.ru/album/40923662?ref_id=4987D2EB-E3ED-444E-9CB3-C8E044407EF1&utm_medium=copy_link" target="_blank" rel="noopener" class="platform-link">🎵 Яндекс</a>
+            <a href="https://podcasts.apple.com/us/podcast/%D0%B8%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%B8%D0%BD%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D0%BA%D1%82-%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B8-%D1%82%D1%80%D0%B5%D0%BD%D0%B4%D1%8B-%D0%BC%D0%B0%D1%85-alproailife/id1883681838" target="_blank" rel="noopener" class="platform-link">🍎 Apple</a>
+            <a href="https://mts-music-spo.onelink.me/sKFX/7wmn7bcg" target="_blank" rel="noopener" class="platform-link">🎶 MTS</a>
+            <a href="https://www.litres.ru/podcast/aleksey-prohorov-339/iskusstvennyy-intellekt-tehnologii-trendy-mah-alproai-73966002/" target="_blank" rel="noopener" class="platform-link">📚 Литрес</a>
+          </div>
+        </div>
+        <!-- Выпуск 13 -->
+        <div class="podcast-item">
+          <div class="podcast-number">13.</div>
+          <div class="podcast-title">Оценка задач: почему мы всегда ошибаемся в сроках цифрового проекта (закон Хофштадтера)</div>
+          <div class="podcast-links">
+            <a href="https://alproailife.mave.digital/" target="_blank" rel="noopener" class="platform-link">🎙 MAVE</a>
+            <a href="https://zvuk.com/podcast/49395272" target="_blank" rel="noopener" class="platform-link">🔊 ЗВУК</a>
+            <a href="https://vk.ru/podcasts-236572303" target="_blank" rel="noopener" class="platform-link">📱 VK</a>
+            <a href="https://music.yandex.ru/album/40923662?ref_id=4987D2EB-E3ED-444E-9CB3-C8E044407EF1&utm_medium=copy_link" target="_blank" rel="noopener" class="platform-link">🎵 Яндекс</a>
+            <a href="https://podcasts.apple.com/us/podcast/%D0%B8%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%B8%D0%BD%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D0%BA%D1%82-%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B8-%D1%82%D1%80%D0%B5%D0%BD%D0%B4%D1%8B-%D0%BC%D0%B0%D1%85-alproailife/id1883681838" target="_blank" rel="noopener" class="platform-link">🍎 Apple</a>
+            <a href="https://mts-music-spo.onelink.me/sKFX/7wmn7bcg" target="_blank" rel="noopener" class="platform-link">🎶 MTS</a>
+            <a href="https://www.litres.ru/podcast/aleksey-prohorov-339/iskusstvennyy-intellekt-tehnologii-trendy-mah-alproai-73966002/" target="_blank" rel="noopener" class="platform-link">📚 Литрес</a>
+          </div>
+        </div>
+        <!-- Выпуск 14 -->
+        <div class="podcast-item">
+          <div class="podcast-number">14.</div>
+          <div class="podcast-title">Они уходят молча: как распознать демотивацию в распределенной команде до заявления</div>
+          <div class="podcast-links">
+            <a href="https://alproailife.mave.digital/" target="_blank" rel="noopener" class="platform-link">🎙 MAVE</a>
+            <a href="https://zvuk.com/podcast/49395272" target="_blank" rel="noopener" class="platform-link">🔊 ЗВУК</a>
+            <a href="https://vk.ru/podcasts-236572303" target="_blank" rel="noopener" class="platform-link">📱 VK</a>
+            <a href="https://music.yandex.ru/album/40923662?ref_id=4987D2EB-E3ED-444E-9CB3-C8E044407EF1&utm_medium=copy_link" target="_blank" rel="noopener" class="platform-link">🎵 Яндекс</a>
+            <a href="https://podcasts.apple.com/us/podcast/%D0%B8%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%B8%D0%BD%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D0%BA%D1%82-%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B8-%D1%82%D1%80%D0%B5%D0%BD%D0%B4%D1%8B-%D0%BC%D0%B0%D1%85-alproailife/id1883681838" target="_blank" rel="noopener" class="platform-link">🍎 Apple</a>
+            <a href="https://mts-music-spo.onelink.me/sKFX/7wmn7bcg" target="_blank" rel="noopener" class="platform-link">🎶 MTS</a>
+            <a href="https://www.litres.ru/podcast/aleksey-prohorov-339/iskusstvennyy-intellekt-tehnologii-trendy-mah-alproai-73966002/" target="_blank" rel="noopener" class="platform-link">📚 Литрес</a>
+          </div>
+        </div>
+        <!-- Выпуск 15 -->
+        <div class="podcast-item">
+          <div class="podcast-number">15.</div>
+          <div class="podcast-title">Будущее профессий: какие специальности ИИ уничтожит, а какие усилит в ближайшие 5 лет?</div>
+          <div class="podcast-links">
+            <a href="https://alproailife.mave.digital/" target="_blank" rel="noopener" class="platform-link">🎙 MAVE</a>
+            <a href="https://zvuk.com/podcast/49395272" target="_blank" rel="noopener" class="platform-link">🔊 ЗВУК</a>
+            <a href="https://vk.ru/podcasts-236572303" target="_blank" rel="noopener" class="platform-link">📱 VK</a>
+            <a href="https://music.yandex.ru/album/40923662?ref_id=4987D2EB-E3ED-444E-9CB3-C8E044407EF1&utm_medium=copy_link" target="_blank" rel="noopener" class="platform-link">🎵 Яндекс</a>
+            <a href="https://podcasts.apple.com/us/podcast/%D0%B8%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%B8%D0%BD%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D0%BA%D1%82-%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B8-%D1%82%D1%80%D0%B5%D0%BD%D0%B4%D1%8B-%D0%BC%D0%B0%D1%85-alproailife/id1883681838" target="_blank" rel="noopener" class="platform-link">🍎 Apple</a>
+            <a href="https://mts-music-spo.onelink.me/sKFX/7wmn7bcg" target="_blank" rel="noopener" class="platform-link">🎶 MTS</a>
+            <a href="https://www.litres.ru/podcast/aleksey-prohorov-339/iskusstvennyy-intellekt-tehnologii-trendy-mah-alproai-73966002/" target="_blank" rel="noopener" class="platform-link">📚 Литрес</a>
+          </div>
+        </div>
+        <!-- Выпуск 16 -->
+        <div class="podcast-item">
+          <div class="podcast-number">16.</div>
+          <div class="podcast-title">HR-бренд: когда компания становится «тем самым местом, где хочется работать</div>
+          <div class="podcast-links">
+            <a href="https://alproailife.mave.digital/" target="_blank" rel="noopener" class="platform-link">🎙 MAVE</a>
+            <a href="https://zvuk.com/podcast/49395272" target="_blank" rel="noopener" class="platform-link">🔊 ЗВУК</a>
+            <a href="https://vk.ru/podcasts-236572303" target="_blank" rel="noopener" class="platform-link">📱 VK</a>
+            <a href="https://music.yandex.ru/album/40923662?ref_id=4987D2EB-E3ED-444E-9CB3-C8E044407EF1&utm_medium=copy_link" target="_blank" rel="noopener" class="platform-link">🎵 Яндекс</a>
+            <a href="https://podcasts.apple.com/us/podcast/%D0%B8%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%B8%D0%BD%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D0%BA%D1%82-%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B8-%D1%82%D1%80%D0%B5%D0%BD%D0%B4%D1%8B-%D0%BC%D0%B0%D1%85-alproailife/id1883681838" target="_blank" rel="noopener" class="platform-link">🍎 Apple</a>
+            <a href="https://mts-music-spo.onelink.me/sKFX/7wmn7bcg" target="_blank" rel="noopener" class="platform-link">🎶 MTS</a>
+            <a href="https://www.litres.ru/podcast/aleksey-prohorov-339/iskusstvennyy-intellekt-tehnologii-trendy-mah-alproai-73966002/" target="_blank" rel="noopener" class="platform-link">📚 Литрес</a>
+          </div>
+        </div>
+        <!-- Выпуск 17 -->
+        <div class="podcast-item">
+          <div class="podcast-number">17.</div>
+          <div class="podcast-title">PM или Product Owner: битва титулов и разделение зон ответственности</div>
+          <div class="podcast-links">
+            <a href="https://alproailife.mave.digital/" target="_blank" rel="noopener" class="platform-link">🎙 MAVE</a>
+            <a href="https://zvuk.com/podcast/49395272" target="_blank" rel="noopener" class="platform-link">🔊 ЗВУК</a>
+            <a href="https://vk.ru/podcasts-236572303" target="_blank" rel="noopener" class="platform-link">📱 VK</a>
+            <a href="https://music.yandex.ru/album/40923662?ref_id=4987D2EB-E3ED-444E-9CB3-C8E044407EF1&utm_medium=copy_link" target="_blank" rel="noopener" class="platform-link">🎵 Яндекс</a>
+            <a href="https://podcasts.apple.com/us/podcast/%D0%B8%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%B8%D0%BD%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D0%BA%D1%82-%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B8-%D1%82%D1%80%D0%B5%D0%BD%D0%B4%D1%8B-%D0%BC%D0%B0%D1%85-alproailife/id1883681838" target="_blank" rel="noopener" class="platform-link">🍎 Apple</a>
+            <a href="https://mts-music-spo.onelink.me/sKFX/7wmn7bcg" target="_blank" rel="noopener" class="platform-link">🎶 MTS</a>
+            <a href="https://www.litres.ru/podcast/aleksey-prohorov-339/iskusstvennyy-intellekt-tehnologii-trendy-mah-alproai-73966002/" target="_blank" rel="noopener" class="platform-link">📚 Литрес</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- КОНТАКТЫ -->
-  <section class="section" id="contact" style="background: var(--surface);">
+  <section class="section" id="contact">
     <div class="container">
       <h2 class="section-title reveal">Контакты</h2>
       <p class="section-subtitle reveal">Обсудим ваш проект или стратегическое партнёрство</p>
@@ -569,7 +859,6 @@
 
   <script>
     (function() {
-      // Анимация нейросети
       const canvas = document.getElementById('neuralCanvas');
       const ctx = canvas.getContext('2d');
       let width, height;
@@ -641,7 +930,6 @@
       initParticles();
       animateNeural();
 
-      // Появление блоков
       const revealElements = document.querySelectorAll('.reveal');
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -653,7 +941,6 @@
       }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
       revealElements.forEach(el => observer.observe(el));
 
-      // Активный пункт меню
       const sections = document.querySelectorAll('section[id]');
       const navLinks = document.querySelectorAll('.nav-links a');
       window.addEventListener('scroll', () => {
@@ -672,7 +959,6 @@
         });
       });
 
-      // Анимация клика по логотипу
       const logo = document.getElementById('mainLogo');
       logo.addEventListener('click', function(e) {
         e.preventDefault();
@@ -682,7 +968,6 @@
           this.style.transform = '';
           this.style.filter = '';
         }, 200);
-        // Плавный скролл наверх
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     })();
