@@ -55,7 +55,7 @@
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* Шапка */
+    /* ===== ШАПКА ===== */
     .header {
       position: fixed; top: 0; left: 0; width: 100%;
       background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);
@@ -65,17 +65,34 @@
       display: flex; justify-content: space-between; align-items: center;
       height: 80px; max-width: var(--max-width); margin: 0 auto; padding: 0 2rem;
     }
+
+    /* Логотип AI.ПРОХОРОВ */
     .nav-logo {
-      text-decoration: none; display: flex; flex-direction: column;
+      text-decoration: none; display: flex; align-items: baseline; gap: 0.25rem;
+      position: relative; transition: transform var(--transition), filter var(--transition);
     }
-    .nav-logo-main {
-      font-weight: 700; font-size: 1.5rem; color: var(--text-primary);
-      letter-spacing: -0.02em; line-height: 1.2;
+    .nav-logo:hover {
+      transform: scale(1.03);
+      filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.4));
+    }
+    .nav-logo:active {
+      transform: scale(0.97);
+      filter: drop-shadow(0 0 12px rgba(37, 99, 235, 0.7));
+      transition: 0.1s;
+    }
+    .logo-ai {
+      font-size: 1.8rem; font-weight: 800; color: var(--accent);
+      letter-spacing: -0.03em; position: relative;
+    }
+    .logo-prokhorov {
+      font-size: 1.5rem; font-weight: 700; color: var(--text-primary);
+      letter-spacing: -0.02em;
     }
     .nav-logo-sub {
-      font-weight: 400; font-size: 0.8rem; color: var(--text-muted);
-      letter-spacing: 0.02em; margin-top: 2px;
+      display: block; font-weight: 400; font-size: 0.75rem; color: var(--text-muted);
+      letter-spacing: 0.02em; margin-top: 2px; margin-left: 0.25rem;
     }
+
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
       text-decoration: none; color: var(--text-secondary);
@@ -89,7 +106,7 @@
     }
     .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
-    /* Hero */
+    /* ===== HERO ===== */
     .hero {
       min-height: 100vh; display: flex; align-items: center;
       position: relative; overflow: hidden;
@@ -99,7 +116,28 @@
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
       opacity: 0.25; pointer-events: none;
     }
-    .hero-content { position: relative; z-index: 10; max-width: 800px; }
+    .hero-content { 
+      position: relative; z-index: 10; max-width: 900px;
+      display: flex; align-items: center; gap: 3rem;
+    }
+    .hero-photo {
+      flex-shrink: 0;
+      width: 180px; height: 180px;
+      border-radius: 50%; background: #f1f5f9;
+      border: 4px solid white;
+      box-shadow: 0 0 0 4px var(--accent-light), var(--shadow-lg);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      /* Placeholder иконка */
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2394a3b8"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v1.2c0 .66.54 1.2 1.2 1.2h16.8c.66 0 1.2-.54 1.2-1.2v-1.2c0-3.2-6.4-4.8-9.6-4.8z"/></svg>');
+      background-size: 60px; background-repeat: no-repeat; background-position: center;
+      background-color: #e2e8f0;
+    }
+    /* Если фото задано, оно будет показано */
+    .hero-photo img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .hero-text { flex: 1; }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 0.5rem;
       background: white; border: 1px solid var(--border);
@@ -150,7 +188,7 @@
       background: var(--accent-light);
     }
 
-    /* Обо мне */
+    /* ===== ОБО МНЕ ===== */
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
     .about-text p { color: var(--text-secondary); margin-bottom: 1.5rem; }
     .skill-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
@@ -170,7 +208,7 @@
     .stat-number { font-size: 2.5rem; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 0.5rem; }
     .stat-label { color: var(--text-secondary); font-size: 0.95rem; }
 
-    /* Опыт */
+    /* ===== ОПЫТ ===== */
     .timeline { position: relative; padding-left: 2rem; }
     .timeline::before {
       content: ''; position: absolute; left: 0; top: 0; bottom: 0;
@@ -193,7 +231,7 @@
       content: '▹'; position: absolute; left: 0; color: var(--accent); font-weight: 700;
     }
 
-    /* Проекты */
+    /* ===== ПРОЕКТЫ ===== */
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem; }
     .project-card {
       background: var(--surface); border: 1px solid var(--border);
@@ -221,7 +259,7 @@
     }
     .project-link:hover { gap: 0.75rem; }
 
-    /* Книги */
+    /* ===== КНИГИ ===== */
     .book-card {
       display: grid; grid-template-columns: 240px 1fr; gap: 2.5rem;
       background: var(--surface); border: 1px solid var(--border);
@@ -241,7 +279,14 @@
     .book-author { font-weight: 500; color: var(--text-secondary); margin-bottom: 1rem; }
     .book-description { color: var(--text-secondary); line-height: 1.7; white-space: pre-line; }
 
-    /* Контакты */
+    /* ===== СТАТЬИ ===== */
+    .articles-empty {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 3rem 2rem; text-align: center;
+      color: var(--text-muted); font-size: 1.1rem;
+    }
+
+    /* ===== КОНТАКТЫ ===== */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
     .contact-info h3 { font-size: 1.5rem; margin-bottom: 1rem; }
     .contact-info p { color: var(--text-secondary); margin-bottom: 1.5rem; }
@@ -277,6 +322,7 @@
 
     @media (max-width: 900px) {
       .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-content { flex-direction: column; text-align: center; }
       .hero h1 { font-size: 2.8rem; }
       .nav-links { display: none; }
       .book-card { grid-template-columns: 1fr; }
@@ -287,15 +333,19 @@
 <body>
   <header class="header">
     <nav class="nav">
-      <a href="#" class="nav-logo">
-        <span class="nav-logo-main">AI.ПРОХОРОВ</span>
-        <span class="nav-logo-sub">директор по развитию технологий искусственного интеллекта</span>
+      <a href="#" class="nav-logo" id="mainLogo">
+        <span class="logo-ai">AI.</span>
+        <span class="logo-prokhorov">ПРОХОРОВ</span>
       </a>
+      <div style="display: flex; flex-direction: column;">
+        <span class="nav-logo-sub">директор по развитию технологий искусственного интеллекта</span>
+      </div>
       <ul class="nav-links">
         <li><a href="#about">Обо мне</a></li>
         <li><a href="#experience">Опыт</a></li>
         <li><a href="#projects">Проекты</a></li>
         <li><a href="#books">Книги</a></li>
+        <li><a href="#articles">Статьи</a></li>
         <li><a href="#contact">Контакты</a></li>
       </ul>
     </nav>
@@ -304,14 +354,19 @@
   <section class="hero" id="hero">
     <canvas id="neuralCanvas"></canvas>
     <div class="container hero-content">
-      <div class="hero-badge reveal">
-        <span class="dot"></span> Открыт к стратегическим проектам
+      <div class="hero-photo reveal" id="heroPhoto">
+        <!-- Замените на <img src="ваше_фото.jpg" alt="Алексей Прохоров" /> -->
       </div>
-      <h1 class="reveal">Алексей <span>Прохоров</span></h1>
-      <p class="reveal">Создаю AI-стратегии, которые превращают данные в конкурентное преимущество.</p>
-      <div class="hero-buttons reveal">
-        <a href="#contact" class="btn btn-primary">Связаться</a>
-        <a href="#experience" class="btn btn-outline">Посмотреть опыт</a>
+      <div class="hero-text">
+        <div class="hero-badge reveal">
+          <span class="dot"></span> Открыт к стратегическим проектам
+        </div>
+        <h1 class="reveal">Алексей <span>Прохоров</span></h1>
+        <p class="reveal">Создаю AI-стратегии, которые превращают данные в конкурентное преимущество.</p>
+        <div class="hero-buttons reveal">
+          <a href="#contact" class="btn btn-primary">Связаться</a>
+          <a href="#experience" class="btn btn-outline">Посмотреть опыт</a>
+        </div>
       </div>
     </div>
   </section>
@@ -440,15 +495,13 @@
     </div>
   </section>
 
-  <!-- НОВЫЙ РАЗДЕЛ: КНИГИ -->
+  <!-- КНИГИ -->
   <section class="section" id="books" style="background: var(--surface);">
     <div class="container">
       <h2 class="section-title reveal">Книги</h2>
       <p class="section-subtitle reveal">Авторские издания и публикации</p>
       <div class="book-card reveal">
-        <div class="book-cover" title="Место для обложки книги">
-          <!-- Заглушка: вставьте <img src="обложка.jpg" alt="Обложка" /> -->
-        </div>
+        <div class="book-cover" title="Место для обложки книги"></div>
         <div class="book-info">
           <h3>Записки директора по искусственному интеллекту</h3>
           <div class="book-author">Прохоров, Алексей Павлович</div>
@@ -462,19 +515,29 @@
     </div>
   </section>
 
-  <section class="section" id="contact" style="background: var(--bg);">
+  <!-- СТАТЬИ -->
+  <section class="section" id="articles">
+    <div class="container">
+      <h2 class="section-title reveal">Статьи</h2>
+      <p class="section-subtitle reveal">Мысли, инсайты и аналитика</p>
+      <div class="articles-empty reveal">
+        <p>Здесь скоро появятся мои статьи и публикации.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- КОНТАКТЫ -->
+  <section class="section" id="contact" style="background: var(--surface);">
     <div class="container">
       <h2 class="section-title reveal">Контакты</h2>
       <p class="section-subtitle reveal">Обсудим ваш проект или стратегическое партнёрство</p>
       <div class="contact-grid">
         <div class="contact-info reveal">
           <h3>Свяжитесь удобным способом</h3>
-          <p>Отвечаю лично в течение 24 часов. Предпочитаю email или Telegram для оперативной коммуникации.</p>
+          <p>Отвечаю лично в течение 24 часов. Предпочитаю email или МАКС для оперативной коммуникации.</p>
           <ul class="contact-links">
-            <!-- EDIT: реальные контакты -->
-            <li><a href="mailto:alexey.prokhorov@example.com">✉️ Email</a></li>
-            <li><a href="https://t.me/alexeyprokhorov" target="_blank">💬 Telegram</a></li>
-            <li><a href="https://linkedin.com/in/alexeyprokhorov" target="_blank">🔗 LinkedIn</a></li>
+            <li><a href="mailto:alprominec2024@yandex.ru">✉️ Email</a></li>
+            <li><a href="https://max.ru/alproailife" target="_blank">💬 МАКС</a></li>
           </ul>
         </div>
         <div class="contact-form reveal">
@@ -506,6 +569,7 @@
 
   <script>
     (function() {
+      // Анимация нейросети
       const canvas = document.getElementById('neuralCanvas');
       const ctx = canvas.getContext('2d');
       let width, height;
@@ -606,6 +670,20 @@
             link.classList.add('active');
           }
         });
+      });
+
+      // Анимация клика по логотипу
+      const logo = document.getElementById('mainLogo');
+      logo.addEventListener('click', function(e) {
+        e.preventDefault();
+        this.style.transform = 'scale(1.1)';
+        this.style.filter = 'drop-shadow(0 0 16px rgba(37, 99, 235, 0.8))';
+        setTimeout(() => {
+          this.style.transform = '';
+          this.style.filter = '';
+        }, 200);
+        // Плавный скролл наверх
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     })();
   </script>
